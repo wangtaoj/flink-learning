@@ -26,8 +26,8 @@
     <dependencies>
 
       <!--
-        flink核心依赖, 不需要打包到应用程序中，flink集群已经包含这些
-        本地运行需要
+        flink核心依赖, 不需要打包到应用程序中，flink集群已经包含这些，本地运行需要
+        其中flink-clients包含了本地运行的flink runtime
       -->
       <dependency>
         <groupId>org.apache.flink</groupId>
