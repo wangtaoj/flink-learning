@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>flink-basic</module>
+    <module>mysqlcdc-es</module>
   </modules>
 
   <properties>
@@ -45,6 +46,38 @@
         <version>${flink.version}</version>
       </dependency>
       <!-- end -->
+
+      <!--
+        flink table api 依赖, 不需要打包到应用程序中，flink集群已经包含这些，本地运行需要
+      -->
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-table-api-java</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-table-runtime</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-table-planner-loader</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <!-- end -->
+
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-connector-base</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.ververica</groupId>
+        <artifactId>flink-connector-mysql-cdc</artifactId>
+        <version>3.0.1</version>
+      </dependency>
 
       <dependency>
         <groupId>ch.qos.logback</groupId>
