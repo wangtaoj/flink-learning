@@ -18,6 +18,9 @@ import java.util.Properties;
 public class MysqlBinlog {
 
     /**
+     * 接收到的数据以一条为单位，比如update更新了两条数据，那么会收到两条数据
+     * before、after属性是单个的，不是一个数组
+     *
      * startupOptions
      * StartupOptions.initial(): 默认值, 全量(表中已有数据)加增量binlog
      * 全量读取阶段没有锁，可以并行读取，增量监听binlog时并行度会自动变成单一并行度，以保证binlog顺序性
