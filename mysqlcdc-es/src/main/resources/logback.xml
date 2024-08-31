@@ -13,7 +13,7 @@
   <logger name="com.wangtao" level="DEBUG" />
 
   <!--处理<logger>未处理的日志, 比如项目所引用别的框架的日志 -->
-  <root level="ERROR">
+  <root level="WARN">
     <appender-ref ref="console"/>
   </root>
 
