@@ -7,9 +7,6 @@
     <encoder>
       <pattern>%date{yyyy-MM-dd HH:mm:ss} %highlight(%-5p) --- [%t]%cyan([%c{40}]) : %m%n</pattern>
     </encoder>
-    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-      <level>DEBUG</level>
-    </filter>
   </appender>
 
   <!-- 整个项目 log 日志 -->
