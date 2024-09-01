@@ -21,7 +21,7 @@ var deserializer = new JsonDebeziumDeserializationSchema(false, customConverterC
 
 对于上面说的情况，转成Java对象时，都需要自己写Jackson的反序列化器来解决。
 
-参见`FlinkCdcDateDeserialize`、`FlinkCdcDateTimeDeserialize`、`FlinkCdcTimeStampDeserialize`。
+参见自定义的(非内置)`FlinkCdcDateDeserialize`、`FlinkCdcDateTimeDeserialize`、`FlinkCdcTimeStampDeserialize`。
 
 [debezium对于这部分的文档说明](https://debezium.io/documentation/reference/2.7/connectors/mysql.html#mysql-data-types)
 ### 关于JSR310模块在Flink中的使用
