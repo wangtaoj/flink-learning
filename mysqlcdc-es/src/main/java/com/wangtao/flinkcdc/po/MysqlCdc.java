@@ -33,7 +33,7 @@ public class MysqlCdc {
     private BigDecimal money;
 
     @JsonDeserialize(using = FlinkCdcDateDeserialize.class)
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     @JsonDeserialize(using = FlinkCdcTimeStampDeserialize.class)
