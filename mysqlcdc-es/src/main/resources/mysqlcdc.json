@@ -1,0 +1,32 @@
+{
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "id": {
+        "type": "long"
+      },
+      "name": {
+        "type": "text"
+      },
+      "age": {
+        "type": "integer"
+      },
+      "money": {
+        "type": "scaled_float",
+        "scaling_factor": 100
+      },
+      "birthday": {
+        "type": "date",
+        "format": "yyyy-MM-dd"
+      },
+      "createTime": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss"
+      },
+      "updateTime": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss"
+      }
+    }
+  }
+}
