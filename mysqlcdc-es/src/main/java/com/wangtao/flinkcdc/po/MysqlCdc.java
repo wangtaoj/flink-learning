@@ -1,6 +1,7 @@
 package com.wangtao.flinkcdc.po;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wangtao.flinkcdc.parser.jackson.FlinkCdcDateDeserialize;
 import com.wangtao.flinkcdc.parser.jackson.FlinkCdcDateTimeDeserialize;
@@ -32,6 +33,7 @@ public class MysqlCdc {
     private BigDecimal money;
 
     @JsonDeserialize(using = FlinkCdcDateDeserialize.class)
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     private Date birthday;
 
     @JsonDeserialize(using = FlinkCdcTimeStampDeserialize.class)

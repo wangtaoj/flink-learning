@@ -35,10 +35,10 @@ public class MysqlBinlog {
      *
      * 返回的JSON值
      * op: SQL操作
-     * r: 不是来自binlog
-     * c: insert
-     * u: update
-     * d: delete
+     * r: 不是来自binlog, 直接来自于表中数据, 数据位于after
+     * c: insert, 数据位于after
+     * u: update, before、after都有数据, 代表修改前修改后
+     * d: delete, 数据位于before，代表删除前的数据, after为null
      */
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();

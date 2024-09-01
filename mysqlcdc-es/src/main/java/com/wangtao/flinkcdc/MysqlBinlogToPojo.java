@@ -66,7 +66,7 @@ public class MysqlBinlogToPojo {
                     @Override
                     public void flatMap(String value, Collector<BinlogModel<MysqlCdc>> out) {
                         BinlogModel<MysqlCdc> binlogModel = JsonUtils.jsonToObj(value, new TypeReference<>() {});
-                        System.out.println(binlogModel);
+                        out.collect(binlogModel);
                     }
                 });
         binlogStream.print().setParallelism(1);
