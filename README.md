@@ -1,6 +1,9 @@
 ### What
 Flink学习笔记
 
+### 版本
+Flink 1.18.1、MySQL CDC 3.0.1
+
 ### Flink CDC踩的坑
 基于JsonDebeziumDeserializationSchema自带的序列化器
 #### 关于Decimal类型
@@ -35,4 +38,16 @@ var deserializer = new JsonDebeziumDeserializationSchema(false, customConverterC
 [debezium对于这部分的文档说明](https://debezium.io/documentation/reference/2.7/connectors/mysql.html#mysql-data-types)
 ### 关于JSR310模块在Flink中的使用
 * 在JDK8中，由于没有模块化机制限制，可以正常在POJO中使用。
-* 而在JDK9+版本，由于Java新增了模块化机制，导致无法在Flink中使用，Flink在序列化时会报错，只能退而求次使用java.util.Date API。
+* 在JDK11中，虽然有模块化限制，但是对于unamed module而言，是可以通过反射访问模块中的私有变量的，只不过会有一个警告。
+* 而在JDK17+版本，由于Java增强了模块化限制，即使是一个module放在classpath上作为一个unnamed module时，通过反射访问非公共属性时还是会报错，需要手动增加启动参数，公开反射访问权限。否则无法在Flink中使用，Flink在序列化时会报错。
+
+解决方式：
+增加以下jvm启动参数即可
+```text
+# 公开java.base模块的java.util、java.time包的反射访问权限给所有的未命名模块
+--add-opens java.base/java.util=ALL-UNNAMED
+--add-opens java.base/java.time=ALL-UNNAMED
+```
+**注：如果是在flink集群中运行任务，则无需添加，因为flink发行包中已经加了这些启动参数。**
+
+[Java兼容性文档说明](https://nightlies.apache.org/flink/flink-docs-release-1.18/zh/docs/deployment/java_compatibility/)
