@@ -36,33 +36,18 @@ public class JsonUtils {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    private static final String STANDARD_PATTERN = "yyyy-MM-dd HH:mm:ss";
-    private static final String DATE_PATTERN = "yyyy-MM-dd";
-    private static final String TIME_PATTERN = "HH:mm:ss";
+    public static final String STANDARD_PATTERN = "yyyy-MM-dd HH:mm:ss";
+    public static final String DATE_PATTERN = "yyyy-MM-dd";
+    public static final String TIME_PATTERN = "HH:mm:ss";
 
     static {
 
-        //设置java.util.Date时间类的序列化以及反序列化的格式
+        // 设置java.util.Date时间类的序列化以及反序列化的格式
         objectMapper.setDateFormat(new SimpleDateFormat(STANDARD_PATTERN));
 
         /*
          * 设置时区, Jackson默认值为UTC
          * 设置成国内时区(Asia/Shanghai), 这样@JsonFormat中不用指定时区了
-         * 同时会把上面的DateFormat时区设置成指定的这个值
-         * 实际上new SimpleDateFormat()默认时区也是TimeZone.getDefault()
-         * 在这里相当于仅仅修改了Jackson的timeZone属性, 这对于@JsonFormat注解会产生影响
-         * 当@JsonFormat注解没有指定timezone属性时
-         * DateSerializer：java.util.Date的序列化器, 会采用Jackson的设置的timeZone和上面设置的dateFormat
-         * 生成一个新的DateFormat来进行序列化。
-         * 因此字段中没有@JsonFormat注解，使用的DateFormat便是上面设置的
-         * 存在@JsonFormat注解时，会基于上面设置的DateFormat，将@JsonFormat注解上的信息合成一个新的DateFormat
-         *
-         * 最佳实践: dateFormat和timeZone同时设置，保证一致，避免@JsonFormat中没有指定timezone属性时，而采用
-         * 默认的UTC时区(ObjectMapper没有设置timeZone时)
-         *
-         * 注: 该方法对于JDK8新加的时间无效, 只影响DateFormat。JDK8新加的时间采用DateTimeFormatter
-         *
-         * 源码提示: 序列化器类中的createContextual方法
          */
         objectMapper.setTimeZone(TimeZone.getDefault());
 

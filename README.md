@@ -24,16 +24,7 @@ var deserializer = new JsonDebeziumDeserializationSchema(false, customConverterC
 
 对于上面说的情况，转成Java对象时，都需要自己写Jackson的反序列化器来解决。
 
-参见自定义的(非内置)`FlinkCdcDateDeserialize`、`FlinkCdcDateTimeDeserialize`、`FlinkCdcTimeStampDeserialize`。
-
-#### 纪元毫秒数（millisecond since epoch
-通常指的是自 Unix 纪元时间（Epoch Time）以来经过的毫秒数。Unix 纪元时间是指 1970 年 1 月 1 日 00:00:00 UTC（协调世界时）。
-
-举例说明：
-* 0 毫秒：表示 1970 年 1 月 1 日 00:00:00 UTC。
-* 1000 毫秒：表示 1970 年 1 月 1 日 00:00:01 UTC（1970 年 1 月 1 日 0 时 0 分 1 秒）。
-* 86400000 毫秒：表示 1970 年 1 月 2 日 00:00:00 UTC（因为 1 天有 86,400,000 毫秒）。
-* 一个纪元毫秒数+一个时区，便可以确定是这个时区的具体哪个时间。UTC时区-》指定时区
+参见自定义的(非内置)`MysqlDateDeserialize`、`MysqlDateTimeDeserialize`、`MysqlTimestampDeserialize`。
 
 [debezium对于这部分的文档说明](https://debezium.io/documentation/reference/2.7/connectors/mysql.html#mysql-data-types)
 ### 关于JSR310模块在Flink中的使用

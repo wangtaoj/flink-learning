@@ -3,16 +3,19 @@ package com.wangtao.flinkcdc.po;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.wangtao.flinkcdc.parser.jackson.FlinkCdcDateDeserialize;
-import com.wangtao.flinkcdc.parser.jackson.FlinkCdcDateTimeDeserialize;
-import com.wangtao.flinkcdc.parser.jackson.FlinkCdcTimeStampDeserialize;
+import com.wangtao.flinkcdc.parser.jackson.MysqlDateDeserialize;
+import com.wangtao.flinkcdc.parser.jackson.MysqlDateTimeDeserialize;
+import com.wangtao.flinkcdc.parser.jackson.MysqlTimestampDeserialize;
+import com.wangtao.flinkcdc.util.JsonUtils;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author wangtao
@@ -32,15 +35,15 @@ public class MysqlCdc {
 
     private BigDecimal money;
 
-    @JsonDeserialize(using = FlinkCdcDateDeserialize.class)
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date birthday;
+    @JsonDeserialize(using = MysqlDateDeserialize.class)
+    private LocalDate birthday;
 
-    @JsonDeserialize(using = FlinkCdcTimeStampDeserialize.class)
+    @JsonDeserialize(using = MysqlTimestampDeserialize.class)
+    @JsonFormat(pattern = JsonUtils.STANDARD_PATTERN)
     @JsonAlias("create_time")
-    private Date createTime;
+    private Instant createTime;
 
-    @JsonDeserialize(using = FlinkCdcDateTimeDeserialize.class)
+    @JsonDeserialize(using = MysqlDateTimeDeserialize.class)
     @JsonAlias("update_time")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 }

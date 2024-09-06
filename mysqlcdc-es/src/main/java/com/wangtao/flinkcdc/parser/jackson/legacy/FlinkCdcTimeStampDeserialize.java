@@ -1,4 +1,4 @@
-package com.wangtao.flinkcdc.parser.jackson;
+package com.wangtao.flinkcdc.parser.jackson.legacy;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -18,6 +18,7 @@ import java.util.Date;
  * @author wangtao
  * Created at 2024-08-31
  */
+@Deprecated
 public class FlinkCdcTimeStampDeserialize extends StdDeserializer<Date> {
 
     @Serial
