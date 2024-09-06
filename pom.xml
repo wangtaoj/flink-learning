@@ -75,6 +75,12 @@
       </dependency>
 
       <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-json</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+
+      <dependency>
         <groupId>com.ververica</groupId>
         <artifactId>flink-connector-mysql-cdc</artifactId>
         <version>3.0.1</version>
