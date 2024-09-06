@@ -50,4 +50,4 @@ var deserializer = new JsonDebeziumDeserializationSchema(false, customConverterC
 ```
 **注：如果是在flink集群中运行任务，则无需添加，因为flink发行包中已经加了这些启动参数。**
 
-[Java兼容性文档说明](https://nightlies.apache.org/flink/flink-docs-release-1.18/zh/docs/deployment/java_compatibility/)
+[Flink关于Java兼容性文档说明](https://nightlies.apache.org/flink/flink-docs-release-1.18/zh/docs/deployment/java_compatibility/)
