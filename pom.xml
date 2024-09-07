@@ -97,6 +97,12 @@
         <artifactId>logback-classic</artifactId>
         <version>1.2.12</version>
       </dependency>
+      <!-- log4j2 to slf4j -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-to-slf4j</artifactId>
+        <version>2.11.1</version>
+      </dependency>
 
       <dependency>
         <groupId>org.projectlombok</groupId>
